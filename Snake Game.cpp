@@ -21,10 +21,10 @@ int foodOnSnake(){
         }
     }
     if (flag ==1) {
-        return 0; // Food is lying on the co ordinates of the snake
+        return 0;
     }
     else {
-        return 1; // food is not lying on the snake
+        return 1; 
     }
 }
 
@@ -88,32 +88,29 @@ void delay() {
 void changeThePositionOfSnake () {
     if (direction ==1) {
         for (int i = 0; i<=(length-1); i++) {
-            sy[i]--; // direction agar 1 huaa yanee NORTH to y axis ghatega Snake Upar move karega
+            sy[i]--; 
         }
     }
     else if (direction ==2) {
         for (int i = 0; i<=(length-1); i++) {
-            sy[i]++; // direction agar 2 huaa yanee South top y axis increase hoga Snake neeche move karega
+            sy[i]++; 
         }
     }
     else if (direction ==3) {
         for (int i = 0; i<=(length-1); i++) {
-            sx[i]--; // direction agar 3 hai to snake left kee taraf move karega or x axix decrease karega
+            sx[i]--; 
         }
     }
     else if (direction ==4) {
         for (int i = 0; i<=(length-1); i++) {
-            sx[i]++; // direction agar 4 raha to snake right kee taraf move karega or x axix increase karega
+            sx[i]++; 
         }
     }
 }
 
 bool gameOver () {
-    int fsx = sx[0]; // face of snake ka x co ordinate
+    int fsx = sx[0]; 
     int fsy = sy[0];
-    //if (fsx == 0 || fsx == 25 || fsy == 0 || fsy == 25){
-    //    return 0; // GAME OVER touched the boundary
-    //}
     for (int i = 0; i<= (length-1); i++) {
         if (sx[i] == 0 || sx[i] == 25 || sy[i] == 0 || sy[i] == 25) {
             return 0;
@@ -127,10 +124,10 @@ bool gameOver () {
         }
     }
     if (flag ==1) {
-        return 0; // GAMEW OVER Touched on body
+        return 0;
     }
     else {
-        return 1; // na body me touch kiya hai or na hee boundary me touch kiya hai
+        return 1; 
     }
 }
 
@@ -138,7 +135,7 @@ bool foodEatenBySnake() {
     int fsx = sx[0];
     int fsy = sy[0];
     if (fsx == fx && fsy == fy) {
-        return 1; // snake ne food ko kha liya hai
+        return 1; 
     }
     else {
         return 0;
@@ -146,9 +143,9 @@ bool foodEatenBySnake() {
 }
 int main() {
     printBoundary();
-    sx[length] = 13; // first co ordinate of snake X axis
-    sy[length] = 13; // first co ordinate of snake Y axis
-    length++; // length will increase
+    sx[length] = 13; 
+    sy[length] = 13; 
+    length++; 
     printSnake();
     generateFood();
     printFood();
@@ -158,9 +155,9 @@ int main() {
         delay();
         changeCursor(0,26);
         char ch;
-        if (_kbhit()) { // agar kisi ne press kiya tabhee ye If statement khulega
+        if (_kbhit()) { 
             cin>> ch;
-            if (ch == 'w' && direction != 2) { // agar direction upar kee taraf hai to check hoga kee wo neeche kee taraf na ho pehle
+            if (ch == 'w' && direction != 2) { 
                 direction =1;
             }
             else if (ch == 's' && direction != 1) {
@@ -199,20 +196,5 @@ int main() {
         printSnake();
         printFood();
     }
-
-    // fx and fy wo food ke co ordinates hain
     getchar();
 }
-
-
-
-// 2 se 25 tak values generate karna hai
-// 24 se modulo leke usme 2 add kar denge --> 2 3 4 .. ...... 25
-
-
-// 2 se 9 ke beech ke random number generate karne hain --> 2 3 4 5 6 7 8 9
-// 8 se modulo lene pe --> 0 1 2 3 4 5 6 7
-// 9 modulo jo aaya hai usme agar 2 add kartenge to --> 2 3 4 5 6 7 8 9
-
-
-// position --> W -> 1 , S -> 2, A -> 3, D -> 4
